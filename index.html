@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="script/index.js"></script>
+    <link rel="stylesheet" href="style/style.css">
+    <!-- icona google backspace -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=backspace" />
+</head>
+<body>
+    <div class="cointainer-totale">
+        <div class="history-container">
+            <h1>
+                History
+            </h1>
+            <hr>
+
+        </div>
+        <div class="calcolatrice-cointainer">
+            <h1>Calcolatrice</h1>
+            <h3>Effetua i calcoli</h3>
+            <div class="live-counter">
+                <p id="live2">‎</p> <!-- carattere vuoto -->
+            </div>
+            <div class="live-counter">
+                <p id="live1">‎</p> <!-- carattere vuoto -->
+            </div>
+            <div class="live-counter">
+                <p id="live">‎</p> <!-- carattere vuoto -->
+            </div>
+                <table class="dati-calcolatrice">
+                    <td><button onclick="live(7)">7</button></td>
+                    <td><button onclick="live(8)">8</button></td>
+                    <td><button onclick="live(9)">9</button></td>
+                    <td><button onclick="live('/')">÷</button></td>
+                    <td><button onclick="reset()">AC</button></td>
+                    
+                    <tr></tr>
+
+                    <td><button onclick="live(4)">4</button></td>
+                    <td><button onclick="live(5)">5</button></td>
+                    <td><button onclick="live(6)">6</button></td>
+                    <td><button onclick="live('*')">*</button></td>
+                    <td><button onclick="live('()')">( )</button></td>
+
+                    <tr></tr>
+
+                    <td><button onclick="live(1)">1</button></td>
+                    <td><button onclick="live(2)">2</button></td>
+                    <td><button onclick="live(3)">3</button></td>
+                    <td><button onclick="live('-')">-</button></td>
+                    <td><button onclick="live('%')">%</button></td>
+
+                    <tr></tr>
+
+                    <td><button onclick="live(0)">0</button></td>
+                    <td><button onclick="live('.')">.</button></td>
+                    <td><button onclick="live('del')"><span class="material-symbols-outlined">backspace</span></button></td>
+                    <td><button onclick="live('+')">+</button></td>
+                    <td><button onclick="calcola()">=</button></td>
+                </table>
+        </div>    
+    </div>
+</body>
+</html>
