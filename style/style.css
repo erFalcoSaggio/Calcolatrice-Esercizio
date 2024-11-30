@@ -1,65 +1,144 @@
+/* Base reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Corpo e background */
 body {
-    background-color: #caf0f8;
-    margin: auto;
-}
-
-.cointainer-totale {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
     display: flex;
-    align-items: center;
     justify-content: center;
-    padding: 10%;
-}
-
-.history-container {
-    border: 2px solid yellow;
-    padding: 10%;
-}
-
-.calcolatrice-cointainer {
-    border: 2px solid green;
-    padding: 10%;
-}
-
-.live-counter {
-    border-radius: 10px;
-    padding: 8%;
-    background-color: #fff;
-    margin-bottom: 2vh;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
-}
-
-#live, #live2, #live1 {
-    text-align: right;
+    align-items: center;
+    height: 100vh;
     margin: 0;
 }
 
-.form-calcolatrice {
+/* Contenitore principale della calcolatrice */
+.calculator {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 320px;
     text-align: center;
+    box-sizing: border-box;
 }
 
-.dati-calcolatrice {
-    width: 100%;
+/* Display della calcolatrice */
+#display {
+    background-color: #1d1f28;
+    color: #ffffff;
+    font-size: 2rem;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    min-height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: right;
+    height: 60px;
 }
 
-.dati-calcolatrice button {
-    border: 0px;
-    background-color: #fff;
-    text-align: center;
-    font-size: 150%;
-    border-radius: 2px;
-    width: 100%;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
-    transition: 0.3s;
+/* Storia dei calcoli */
+.history {
+    margin-bottom: 20px;
+    background-color: #f0f0f5;
+    padding: 10px;
+    border-radius: 10px;
+    height: 150px;
+    overflow-y: auto;
+    margin-bottom: 20px;
 }
 
-.dati-calcolatrice button:hover {
-    border-radius: 6px;
-    background-color: #c4c4c4;
-    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
+.history h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #333;
 }
 
-#invia-dati, button[type="reset"] {
-    border: 0px;
-    padding: 3%;
-    background-color: #fff;
+.history ul {
+    list-style-type: none;
 }
+
+.history li {
+    font-size: 1rem;
+    color: #555;
+    padding: 5px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Pulsanti */
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    font-size: 1.5rem;
+    padding: 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Pulsante C (reset) */
+button:hover:active {
+    background-color: #3e8e41;
+}
+
+/* Pulsante per operatori */
+button:active {
+    background-color: #3e8e41;
+}
+
+button:nth-child(4), 
+button:nth-child(8), 
+button:nth-child(12), 
+button:nth-child(16) {
+    background-color: #FF5733;
+}
+
+button:nth-child(4):hover, 
+button:nth-child(8):hover, 
+button:nth-child(12):hover, 
+button:nth-child(16):hover {
+    background-color: #e04e2b;
+}
+
+button:nth-child(4):active, 
+button:nth-child(8):active, 
+button:nth-child(12):active, 
+button:nth-child(16):active {
+    background-color: #d13d1a;
+}
+
+/* Pulsante = */
+button:nth-child(17) {
+    background-color: #FF8C00;
+}
+
+button:nth-child(17):hover {
+    background-color: #e67e00;
+}
+
+button:nth-child(17):active {
+    background-color: #d46a00;
+}
+
+/* Pulsante Backspace */
+button span {
+    font-size: 2rem;
+}
+

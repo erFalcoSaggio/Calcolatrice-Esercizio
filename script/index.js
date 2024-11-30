@@ -1,52 +1,82 @@
-let op = '';
-operazione = '';
+let currentInput = '';  // Numero corrente
+let previousInput = ''; // Numero precedente (per il calcolo)
+let operator = '';      // Operatore (+, -, *, /)
+let history = [];       // Storia dei calcoli
 
-function live(n) {
-    let live2 = document.getElementById('live2');
-    let live = document.getElementById('live');
-
-    if (n == '+') {
-        live1.innerText += n;
-        op++;
-        operazione += '+';
-    } else if (n == '-') {
-        live1.innerText += n;
-        op++;
-        operazione += 'so';
+// Aggiunge un numero a currentInput
+function appendNumber(number) {
+    // Se l'input corrente è un risultato e l'utente sta iniziando un nuovo calcolo
+    if (currentInput === '0' || currentInput === '') {
+        currentInput = number.toString();
+    } else {
+        currentInput += number.toString();
     }
-    else if (n == '*') {
-        live1.innerText += n;
-        op++;
-        operazione += 'mo';
-    }
-    else if (n == '%') {
-        live1.innerText += n;
-        op++;
-        operazione += 'di';
-    }
-    else if (op >= 1) {
-        live.innerText += n;
-    }  
-    else  if (!isNaN(n)){
-        live2.innerText += n;
-    }
-    console.log(operazione)
+    document.getElementById('display').innerText = currentInput;
 }
 
-
-function calcola() {
-    // prendo i valori
-    let live = document.querySelector('#live').textContent;
-    let live2 = document.querySelector('#live2').textContent;
-
-    // metto in int
-    console.log(live + operazione + live2);
-    
-    
+// Imposta l'operatore
+function setOperator(op) {
+    if (currentInput === '') return;
+    if (previousInput !== '') {
+        calculate(); // Esegui il calcolo se c'è già un numero precedente
+    }
+    operator = op;
+    previousInput = currentInput;
+    currentInput = ''; // Pulisce il display per il nuovo numero
 }
 
-function reset() {
-    let live = document.getElementById('live');
+// Esegui il calcolo
+function calculate() {
+    let result;
+    const prev = parseFloat(previousInput);
+    const current = parseFloat(currentInput);
 
-    live.innerText = '‎'; // rimette il carattere vuoto
+    if (isNaN(prev) || isNaN(current)) return;
+
+    // Calcoli basati sull'operatore
+    switch (operator) {
+        case '+':
+            result = prev + current;
+            break;
+        case '-':
+            result = prev - current;
+            break;
+        case '*':
+            result = prev * current;
+            break;
+        case '/':
+            if (current === 0) {
+                alert('Errore: Divisione per zero!');
+                result = 'Errore';
+            } else {
+                result = prev / current;
+            }
+            break;
+        default:
+            return;
+    }
+    
+    document.getElementById('display').innerText = currentInput;
+
+    // Aggiungi il calcolo alla storia
+    addToHistory(previousInput, operator, currentInput, result);
+}
+
+// Aggiunge il calcolo alla lista della storia
+function addToHistory(prev, op, current, result) {
+    const historyList = document.getElementById('history-list');
+    const historyItem = document.createElement('li');
+    
+    // Mostra l'intera operazione: input1 + input2 = risultato
+    historyItem.innerText = `${prev} ${op} ${current} = ${result}`;
+    historyList.appendChild(historyItem);
+    history.push(`${prev} ${op} ${current} = ${result}`);
+}
+
+// Pulisce il display
+function clearDisplay() {
+    currentInput = '';
+    previousInput = '';
+    operator = '';
+    document.getElementById('display').innerText = '0';
 }
